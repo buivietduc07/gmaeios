@@ -6,30 +6,25 @@ on:
 jobs:
   build:
     name: Build for iOS 🍏
-    runs-on: ubuntu-22.04 # Dùng bản Ubuntu ổn định này
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          # Dùng bản này cực nhẹ và server luôn có sẵn
-          unityVersion: 2022.3.10f1 
+          # Dùng bản này để server GitHub không phải tải lại từ đầu
+          unityVersion: 6000.0.1f1 
           targetPlatform: iOS
           projectPath: .
-          buildName: MyGameBuild
+          buildName: iOS-Build
 
-      - name: Upload Build Result
+      - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
           name: Build-iOS-Project
