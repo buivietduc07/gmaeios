@@ -13,15 +13,6 @@ jobs:
         with:
           lfs: true
 
-      # Thêm Cache để build nhanh gấp 5 lần ở các lần sau
-      - name: Cache Library
-        uses: actions/cache@v4
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
@@ -32,7 +23,8 @@ jobs:
           unityVersion: 6000.0.1f1
           targetPlatform: iOS
           projectPath: .
-          buildName: MyGame-Build
+          # Thêm dòng này để bỏ qua các lỗi lặt vặt về version
+          allowDirtyBuild: true
 
       - name: Upload Build Result
         uses: actions/upload-artifact@v4
