@@ -6,27 +6,25 @@ on:
 jobs:
   build:
     name: Build for iOS 🍏
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # Dùng bản Ubuntu ổn định này
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Free Disk Space (Dọn dẹp sâu)
+      - name: Free Disk Space
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
 
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          unityVersion: 6000.0.31f1 # Bản ổn định nhất để tránh treo
+          # Dùng bản này cực nhẹ và server luôn có sẵn
+          unityVersion: 2022.3.10f1 
           targetPlatform: iOS
           projectPath: .
           buildName: MyGameBuild
