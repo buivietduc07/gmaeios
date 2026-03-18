@@ -24,8 +24,8 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Ép Unity tự sửa lỗi và in toàn bộ log ra ngoài
-          customParameters: "-quit -batchmode -nographics -accept-apiupdate -logFile /dev/stdout"
+          # Tham số đặc biệt để xử lý lỗi Package và hiện log chuẩn
+          customParameters: "-quit -batchmode -nographics -accept-apiupdate -suppress-common-warnings -logFile /dev/stdout"
 
       - name: Upload Build Result
         uses: actions/upload-artifact@v4
