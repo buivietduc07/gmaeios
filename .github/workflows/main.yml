@@ -13,6 +13,8 @@ jobs:
         with:
           lfs: true
 
+    
+
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
@@ -23,12 +25,5 @@ jobs:
           unityVersion: 6000.0.1f1
           targetPlatform: iOS
           projectPath: .
-          buildName: MyGame-Build
-          # Ép hiện chi tiết lỗi code để ông biết đường sửa
-          showBuildLog: true
-
-      - name: Upload Build Result
-        uses: actions/upload-artifact@v4
-        with:
-          name: Build-iOS-Project
-          path: build/iOS
+          # Thêm dòng dưới đây để tránh lỗi Curl 42
+          versioning: Semantic
