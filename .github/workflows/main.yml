@@ -24,7 +24,7 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Lệnh này cực quan trọng để Unity tự sửa lỗi Package và Code cũ
+          # Ép Unity tự sửa lỗi và in toàn bộ log ra ngoài
           customParameters: "-quit -batchmode -nographics -accept-apiupdate -logFile /dev/stdout"
 
       - name: Upload Build Result
