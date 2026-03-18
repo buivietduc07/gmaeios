@@ -16,7 +16,7 @@ jobs:
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
-          # Nó sẽ tự gọi 2 cái Email/Pass ông vừa tạo trong Secret
+          # Ép hệ thống dùng Email và Pass ông vừa tạo
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
