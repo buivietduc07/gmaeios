@@ -1,16 +1,13 @@
 name: Build Game iOS 🚀
 
-on: 
-  workflow_dispatch: # Dòng này cực quan trọng để hiện nút Run
+on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
@@ -20,9 +17,5 @@ jobs:
           unityVersion: 6000.3.11f1
           targetPlatform: iOS
           projectPath: .
-
-      - name: Upload Build
-        uses: actions/upload-artifact@v4
-        with:
-          name: Build-iOS
-          path: build/iOS
+          # Dòng này để nó tự hiểu là bản Personal
+          versioning: Semantic
