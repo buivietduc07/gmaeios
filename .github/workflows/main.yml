@@ -1,15 +1,21 @@
-name: Get Unity License 🔑
+name: Build Game iOS 🚀
 
 on: workflow_dispatch
 
 jobs:
-  get_license:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate Activation File
-        uses: game-ci/unity-request-activation-file@v2.3.0 # Dùng bản cụ thể này
+      - name: Unity Builder
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          unityVersion: 6000.0.31f1 # Thử dùng bản này để máy chủ dễ nhận diện
+          unityVersion: 6000.3.11f1
+          targetPlatform: iOS
+          projectPath: .
+          # Dòng này để nó tự hiểu là bản Personal
+          versioning: Semantic
