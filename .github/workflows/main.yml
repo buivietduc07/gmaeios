@@ -16,6 +16,7 @@ jobs:
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
+          # Nó sẽ dùng Email Google và Mật khẩu Unity ông vừa cập nhật
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
