@@ -18,12 +18,13 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          # Dùng bản này để server GitHub tải nhanh nhất
           unityVersion: 6000.0.1f1 
           targetPlatform: iOS
           projectPath: .
           buildName: iOS-Build
 
-      - name: Upload Build
+      - name: Upload Build Result
         uses: actions/upload-artifact@v4
         with:
           name: Build-iOS-Project
