@@ -24,10 +24,8 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Hiện toàn bộ log chi tiết để bắt lỗi code
-          showBuildLog: true
-          # Tự động bỏ qua các lỗi nhỏ để cố gắng build tiếp
-          allowDirtyBuild: true
+          # Lệnh này giúp ông thấy lỗi code cụ thể ở đâu
+          customParameters: "-quit -batchmode -nographics -debugCodeOptimization"
 
       - name: Upload Build Result
         uses: actions/upload-artifact@v4
