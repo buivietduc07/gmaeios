@@ -16,15 +16,16 @@ jobs:
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          # Dùng Email/Pass thay cho file License để tránh lỗi định dạng
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          # Dùng bản này để server GitHub không phải tải lại từ đầu
-          unityVersion: 6000.0.1f1 
+          unityVersion: 6000.0.1f1
           targetPlatform: iOS
           projectPath: .
-          buildName: iOS-Build
+          buildName: MyGame-Build
 
-      - name: Upload Build
+      - name: Upload Build Result
         uses: actions/upload-artifact@v4
         with:
           name: Build-iOS-Project
