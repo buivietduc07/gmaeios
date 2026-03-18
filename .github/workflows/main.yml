@@ -24,10 +24,8 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Dòng này sẽ giúp ông thấy lỗi ở file .cs nào
-          showBuildLog: true
-          # Các tham số bổ sung để tránh treo máy ảo
-          customParameters: "-quit -batchmode -nographics -logFile /dev/stdout"
+          # Lệnh quan trọng để ép Unity tải lại toàn bộ Package bị thiếu
+          customParameters: "-quit -batchmode -nographics -accept-apiupdate -logFile /dev/stdout"
 
       - name: Upload Build Result
         uses: actions/upload-artifact@v4
