@@ -1,4 +1,4 @@
-name: Lay Ma Unity 🔑
+name: Get Unity License 🔑
 
 on: workflow_dispatch
 
@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Request Activation File
-        uses: game-ci/unity-request-activation-file@v2
+      - name: Generate Activation File
+        uses: game-ci/unity-request-activation-file@v2.3.0 # Dùng bản cụ thể này
         with:
-          unityVersion: 6000.3.11f1 # Đúng bản Unity 6 của bạn
+          unityVersion: 6000.0.31f1 # Thử dùng bản này để máy chủ dễ nhận diện
