@@ -1,0 +1,38 @@
+name: Build Game iOS 🚀
+
+on:
+  push:
+    branches:
+      - main  # Hoặc 'master' tùy theo tên nhánh của bạn
+
+jobs:
+  build:
+    name: Build for iOS 🍏
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Cache Library
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-iOS
+          restore-keys: Library-
+
+      - name: Unity Builder
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: .
+          targetPlatform: iOS
+          unityVersion: 6000.0.31f1 # Chỉnh đúng bản Unity bạn đang dùng (xem ở image_22f7f8.jpg)
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build-iOS
+          path: build/iOS
