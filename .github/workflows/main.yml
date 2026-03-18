@@ -24,7 +24,7 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Lệnh quan trọng để ép Unity tải lại toàn bộ Package bị thiếu
+          # Lệnh này cực quan trọng để Unity tự sửa lỗi Package và Code cũ
           customParameters: "-quit -batchmode -nographics -accept-apiupdate -logFile /dev/stdout"
 
       - name: Upload Build Result
