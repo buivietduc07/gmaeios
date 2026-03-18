@@ -18,7 +18,6 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          # Dùng bản này để server GitHub không phải tải lại từ đầu
           unityVersion: 6000.0.1f1 
           targetPlatform: iOS
           projectPath: .
