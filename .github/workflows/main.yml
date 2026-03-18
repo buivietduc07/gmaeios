@@ -13,10 +13,6 @@ jobs:
         with:
           lfs: true
 
-      # Bước này cực quan trọng để kiểm tra ông có để nhầm thư mục không
-      - name: Check Folder Structure
-        run: ls -R
-
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
@@ -28,8 +24,9 @@ jobs:
           targetPlatform: iOS
           projectPath: .
           buildName: MyGame-Build
-          # Bật log chi tiết để nhìn thấy lỗi khởi động Project
+          # Dòng này sẽ giúp ông thấy lỗi ở file .cs nào
           showBuildLog: true
+          # Các tham số bổ sung để tránh treo máy ảo
           customParameters: "-quit -batchmode -nographics -logFile /dev/stdout"
 
       - name: Upload Build Result
