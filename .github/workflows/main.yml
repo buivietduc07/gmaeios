@@ -13,25 +13,25 @@ jobs:
         with:
           lfs: true
 
-      - name: Free Disk Space
+      - name: Free Disk Space (Dọn dẹp sâu)
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
           android: true
           dotnet: true
+          haskell: true
 
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          # Thay đổi bản Unity ở đây để máy chủ tìm thấy
-          unityVersion: 6000.0.31f1 
+          unityVersion: 6000.0.31f1 # Bản ổn định nhất để tránh treo
           targetPlatform: iOS
           projectPath: .
-          buildName: iOS-Build
+          buildName: MyGameBuild
 
-      - name: Upload Build
+      - name: Upload Build Result
         uses: actions/upload-artifact@v4
         with:
           name: Build-iOS-Project
