@@ -16,7 +16,7 @@ jobs:
       - name: Unity Builder
         uses: game-ci/unity-builder@v4
         env:
-          # Dùng Email/Pass thay cho file License để tránh lỗi định dạng
+          # Nó sẽ tự lấy Email/Pass ông vừa tạo ở Bước 1
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
